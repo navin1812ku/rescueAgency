@@ -10,6 +10,7 @@ import rescue.agency.RescueAgency.repository.AgencyRepository;
 import rescue.agency.RescueAgency.service.AgencyService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AgencyServiceImpl implements AgencyService {
@@ -54,9 +55,14 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public List<AgencyModel> searchByExpertise(String expertise) {
-        System.out.println(expertise);
-        System.out.println(agencyRepository.findByAgencyExpertiseContaining(expertise));
-        return agencyRepository.findByAgencyExpertiseContaining(expertise);
+        List<AgencyModel> allAgencies = agencyRepository.findAll();
+
+        // Filter agencies based on the given expertise
+        List<AgencyModel> filteredAgencies = allAgencies.stream()
+                .filter(agency -> agency.getAgencyExpertise().contains(expertise))
+                .collect(Collectors.toList());
+
+        return filteredAgencies;
     }
 
     @Override
