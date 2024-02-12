@@ -6,4 +6,5 @@ import rescue.agency.RescueAgency.model.RequestModel;
 
 @Repository
 public interface RequestRepository extends JpaRepository<RequestModel,String> {
+    RequestModel findByRequestMemberId(String id);
 }

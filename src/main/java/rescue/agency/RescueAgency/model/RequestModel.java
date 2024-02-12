@@ -19,7 +19,9 @@ public class RequestModel {
     @Column(nullable = false)
     private String requestType;
     @Column(nullable = false)
-    private String requestReplies;
+    private String replyContent;
+    @Column(nullable = false)
+    private String replyContact;
     @Column(nullable = false)
     private String requestContact;
 }
