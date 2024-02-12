@@ -9,11 +9,11 @@ import lombok.Data;
 @Data
 public class AddressModel {
     @Id
-    private String agency_id;
+    private String agencyEmail;
     @Column(nullable = false)
-    private String door_number;
+    private String doorNumber;
     @Column(nullable = false)
-    private String building_name;
+    private String buildingName;
     @Column(nullable = false)
     private String street;
     @Column(nullable = false)

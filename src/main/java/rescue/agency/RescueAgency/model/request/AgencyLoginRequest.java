@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class AgencyLoginRequest {
-    private String agencyId;
+    private String agencyEmail;
     private String agencyPassword;
 }

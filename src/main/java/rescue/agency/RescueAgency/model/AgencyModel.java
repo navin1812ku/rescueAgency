@@ -11,21 +11,20 @@ import java.util.List;
 @Data
 public class AgencyModel {
     @Id
-    private String agency_id;
+    private String agencyEmail;
     @Column(nullable = false)
-    private String agency_name;
+    private String agencyName;
     @Column(nullable = false)
-    private String agency_contact;
+    private String agencyContact;
     @Column(nullable = false)
-    private List<String> agency_expertise;
+    private List<String> agencyExpertise;
     @Column(nullable = false)
-    private String agency_certificates;
+    private String agencyCertificates;
     @Column(nullable = false)
-    private List<String> agency_category;
-    @Column(nullable = false)
-    @JoinColumn(name = "agency_id")
+    private List<String> agencyCategory;
+    @JoinColumn(name = "agencyEmail")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AddressModel> agency_address;
+    private List<AddressModel> agencyAddress;
     @Column(nullable = false)
-    private String agency_password;
+    private String agencyPassword;
 }

@@ -11,17 +11,17 @@ import lombok.Data;
 @Data
 public class DonateModel {
     @Id
-    private String request_id;
+    private String requestId;
     @Column(nullable = false)
-    private String request_type;
+    private String requestType;
     @Column(nullable = false)
     private String specification;
     @Column(nullable = false)
     private String quantity;
     @Column(nullable = false)
-    private String requested_by;
+    private String requestedBy;
     @Column(nullable = false)
-    private String requester_contact;
+    private String requesterContact;
     @Column(nullable = false)
-    private String request_end_date;
+    private String requestEndDate;
 }

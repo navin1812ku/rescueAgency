@@ -11,15 +11,15 @@ import lombok.Data;
 @Data
 public class RequestModel {
     @Id
-    private String request_member_id;
+    private String requestMemberId;
     @Column(nullable = false)
-    private String request_description;
+    private String requestDescription;
     @Column(nullable = false)
-    private String request_location;
+    private String requestLocation;
     @Column(nullable = false)
-    private String request_type;
+    private String requestType;
     @Column(nullable = false)
-    private String request_replies;
+    private String requestReplies;
     @Column(nullable = false)
-    private String request_contact;
+    private String requestContact;
 }

@@ -20,13 +20,13 @@ public class AgencyServiceImpl implements AgencyService {
     @Override
     public Response login(AgencyLoginRequest agencyLoginRequest) {
         Response response=new Response();
-        AgencyModel agencyModel=agencyRepository.findByAgencyId(agencyLoginRequest.getAgencyId());
+        AgencyModel agencyModel=agencyRepository.findByAgencyEmail(agencyLoginRequest.getAgencyEmail());
         if(agencyModel==null){
             response.setMessage("The entered agency id was not found");
             return response;
         }
         else{
-            if(agencyModel.getAgency_password().equals(agencyLoginRequest.getAgencyPassword())){
+            if(agencyModel.getAgencyPassword().equals(agencyLoginRequest.getAgencyPassword())){
                 response.setMessage("Login successful");
                 return response;
             }
@@ -40,7 +40,7 @@ public class AgencyServiceImpl implements AgencyService {
     @Override
     public Response register(AgencyModel agencyModel) {
         Response response=new Response();
-        AgencyModel model=agencyRepository.findByAgencyId(agencyModel.getAgency_id());
+        AgencyModel model=agencyRepository.findByAgencyEmail(agencyModel.getAgencyEmail());
         if(model!=null){
             response.setMessage("This agency already had an account");
             return response;
@@ -54,31 +54,33 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public List<AgencyModel> searchByExpertise(String expertise) {
-        return agencyRepository.searchByAgencyExpertise(expertise);
+        System.out.println(expertise);
+        System.out.println(agencyRepository.findByAgencyExpertiseContaining(expertise));
+        return agencyRepository.findByAgencyExpertiseContaining(expertise);
     }
 
     @Override
     public List<AgencyModel> searchByLocation(String location) {
-        return agencyRepository.searchByAgencyAddress(location);
+        return agencyRepository.findByAgencyAddress(location);
     }
 
     @Override
     public Response changePassword(AgencyChangePasswordRequest agencyChangePasswordRequest) {
         Response response=new Response();
-        AgencyModel agencyModel=agencyRepository.findByAgencyId(agencyChangePasswordRequest.getAgencyId());
+        AgencyModel agencyModel=agencyRepository.findByAgencyEmail(agencyChangePasswordRequest.getAgencyEmail());
         if(agencyModel==null){
             response.setMessage("The entered agency id does not exists");
             return response;
         }
         else{
-            if(agencyModel.getAgency_password().equals(agencyChangePasswordRequest.getNewPassword())){
+            if(agencyModel.getAgencyPassword().equals(agencyChangePasswordRequest.getAgencyNewPassword())){
                 response.setMessage("The new password matches the old password");
                 return response;
             }
             else{
-                agencyModel.setAgency_password(agencyChangePasswordRequest.getNewPassword());
+                agencyModel.setAgencyPassword(agencyChangePasswordRequest.getAgencyNewPassword());
                 agencyRepository.save(agencyModel);
-                if(agencyModel.getAgency_password().equals(agencyChangePasswordRequest.getNewPassword())){
+                if(agencyModel.getAgencyPassword().equals(agencyChangePasswordRequest.getAgencyNewPassword())){
                     response.setMessage("Password changed successfully");
                     return response;
                 }

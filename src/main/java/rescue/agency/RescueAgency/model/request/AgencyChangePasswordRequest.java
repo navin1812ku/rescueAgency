@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class AgencyChangePasswordRequest {
-    private String agencyId;
-    private String newPassword;
+    private String agencyEmail;
+    private String agencyNewPassword;
 }
