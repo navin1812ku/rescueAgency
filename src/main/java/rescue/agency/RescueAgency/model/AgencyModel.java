@@ -22,9 +22,9 @@ public class AgencyModel {
     private String agencyCertificates;
     @Column(nullable = false)
     private List<String> agencyCategory;
-    @JoinColumn(name = "agencyEmail")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AddressModel> agencyAddress;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "agency_email")
+    private AddressModel agencyAddress;
     @Column(nullable = false)
     private String agencyPassword;
 }
