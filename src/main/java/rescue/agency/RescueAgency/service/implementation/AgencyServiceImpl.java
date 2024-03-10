@@ -69,7 +69,7 @@ public class AgencyServiceImpl implements AgencyService {
     public List<AgencyModel> searchByLocation(String location) {
         return agencyRepository.findByAgencyAddress(location);
     }
-
+//
     @Override
     public Response changePassword(AgencyChangePasswordRequest agencyChangePasswordRequest) {
         Response response=new Response();
