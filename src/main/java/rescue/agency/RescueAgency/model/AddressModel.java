@@ -1,8 +1,6 @@
 package rescue.agency.RescueAgency.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import javax.persistence.*;
 import lombok.Data;
 
 @Entity

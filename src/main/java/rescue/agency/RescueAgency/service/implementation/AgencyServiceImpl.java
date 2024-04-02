@@ -59,9 +59,35 @@ public class AgencyServiceImpl implements AgencyService {
 
         // Filter agencies based on the given expertise
         List<AgencyModel> filteredAgencies = allAgencies.stream()
-                .filter(agency -> agency.getAgencyExpertise().contains(expertise))
+                .filter(agency -> {
+                    String[] expertiseArray = agency.getAgencyExpertise().split(",");
+                    for (String exp : expertiseArray) {
+                        if (exp.trim().equals(expertise)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
                 .collect(Collectors.toList());
+        return filteredAgencies;
+    }
 
+    @Override
+    public List<AgencyModel> searchByCategory(String category) {
+        List<AgencyModel> allAgencies = agencyRepository.findAll();
+
+        // Filter agencies based on the given expertise
+        List<AgencyModel> filteredAgencies = allAgencies.stream()
+                .filter(agency -> {
+                    String[] categoryArray = agency.getAgencyCategory().split(",");
+                    for (String exp : categoryArray) {
+                        if (exp.trim().equals(category)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                })
+                .collect(Collectors.toList());
         return filteredAgencies;
     }
 

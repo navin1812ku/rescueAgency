@@ -1,7 +1,7 @@
 package rescue.agency.RescueAgency.model;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -17,14 +17,16 @@ public class AgencyModel {
     @Column(nullable = false)
     private String agencyContact;
     @Column(nullable = false)
-    private List<String> agencyExpertise;
+    private String agencyExpertise;
     @Column(nullable = false)
     private String agencyCertificates;
     @Column(nullable = false)
-    private List<String> agencyCategory;
+    private String agencyCategory;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "agency_email")
     private AddressModel agencyAddress;
     @Column(nullable = false)
     private String agencyPassword;
+    @Column(nullable = false)
+    private String roles;
 }

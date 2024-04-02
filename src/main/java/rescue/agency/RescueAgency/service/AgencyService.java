@@ -13,6 +13,7 @@ public interface AgencyService {
     Response login(AgencyLoginRequest agencyLoginRequest);
     Response register(AgencyModel agencyModel);
     List<AgencyModel> searchByExpertise(String expertise);
+    List<AgencyModel> searchByCategory(String category);
     List<AgencyModel> searchByLocation(String location);
     Response changePassword(AgencyChangePasswordRequest agencyChangePasswordRequest);
 }

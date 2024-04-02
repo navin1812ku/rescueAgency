@@ -19,6 +19,4 @@ public interface AgencyRepository extends JpaRepository<AgencyModel,String> {
     List<AgencyModel> findByAgencyAddress(@Param("location") String location);
 
     AgencyModel findByAgencyEmail(String id);
-//    @Query(value = "SELECT * FROM agency a WHERE :expertise IN (a.agency_expertise)", nativeQuery = true)
-//    List<AgencyModel> findByAgencyExpertiseContaining(String expertise);
 }

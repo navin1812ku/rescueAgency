@@ -1,10 +1,11 @@
 package rescue.agency.RescueAgency.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "request")
@@ -19,9 +20,9 @@ public class RequestModel {
     @Column(nullable = false)
     private String requestType;
     @Column(nullable = false)
+    private String requestContact;
+    @Column(nullable = false)
     private String replyContent;
     @Column(nullable = false)
     private String replyContact;
-    @Column(nullable = false)
-    private String requestContact;
 }
